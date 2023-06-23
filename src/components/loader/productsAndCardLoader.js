@@ -1,11 +1,13 @@
+import { useState } from "react";
 import { getStoredCart } from "../../utilities/fakedb";
 
- 
+
 export const productsAndcardLoader = async () => {
     // get products
     const productsData = await fetch('products.json');
     const products = await productsData.json();
 
+    
     // get cart
     const savedCart = getStoredCart();
     const initialCart = [];
@@ -18,7 +20,7 @@ export const productsAndcardLoader = async () => {
             addedProduct.quantity = quantity;
             initialCart.push(addedProduct);
         }
-        console.log(id, addedProduct);
+        // console.log(id, addedProduct);
     }
     return { products: products, initialCart: initialCart };
 }

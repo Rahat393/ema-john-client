@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import './Shop.css'
 import Products from '../Products/Products';
 import Cart from '../Cart/Cart';
-import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fakedb';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
    
+  const deleteCart = () => {
+    setCart([])
+    deleteShoppingCart()
+  }
 
   useEffect(() => {
     fetch('products.json')
@@ -18,7 +22,7 @@ const Shop = () => {
   useEffect( () => {
     const storedCart = getStoredCart()
     const savedCart = []
-    console.log(storedCart);
+    // console.log(storedCart);
     for(const id in storedCart){
       const addedProduct = products.find(product => product.id === id);
        if (addedProduct){
@@ -28,7 +32,7 @@ const Shop = () => {
        }
     }
     setCart(savedCart)
-  },[products])
+  },[cart, products])
 
   const handleAddToCart = (selectedProduct) => {
     let newCart = [];
@@ -48,7 +52,7 @@ const Shop = () => {
     addToDb(selectedProduct.id)
 }
   return (
-    <div className='shop-container mt-20 '>
+    <div className='shop-container '>
       <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-11 product-container">
          {
           products.map(product => <Products
@@ -60,6 +64,7 @@ const Shop = () => {
       </div>
       <div className="cart-container bg-orange-100  sticky top-20 right-10  w-64 p-3  h-screen">
          <Cart
+         deleteCart={deleteCart}
          cart={cart}
          ></Cart>
       </div>

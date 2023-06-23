@@ -2,15 +2,20 @@ import React from 'react';
 import Header from '../Shared/Header/Header';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Shared/Footer/Footer';
+import './Main.css'
 
 const Main = () => {
   return (
     <div>
-         <Header></Header>
-         <div className='mt-24 max-w-screen-xl  mx-auto'>
+        <div className='wrapper'>
+        <Header></Header>
+         <div className='  bg-green-50   mt-20'>
          <Outlet ></Outlet>
          </div>
-         <Footer></Footer>
+        </div>
+        <footer className="footer">
+      <Footer></Footer>
+      </footer>
     </div>
   );
 };
