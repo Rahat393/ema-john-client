@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo/zaraa.png';
  
 
 const Header = () => {
 
   const navMenu = <React.Fragment>
      <li>
-      <Link to='/'  className='text-lg font-semibold'>
+      <Link to='/allproduct'  className='text-lg font-semibold'>
       <lord-icon
     src="https://cdn.lordicon.com/medpcfcy.json"
     trigger="hover"
@@ -52,8 +53,9 @@ const Header = () => {
          {navMenu}
       </ul>
     </div>
-    <div >
-     <Link   className="btn btn-ghost normal-case text-3xl text-orange-700 font-semibold ">   zarafashion</Link>
+    <div className='flex'>
+    
+     <Link   className="btn btn-ghost normal-case text-3xl text-yellow-600 font-semibold   "> <img className='w-16 -mr-4' src={logo} alt="" />  zarafashion</Link>
  
     </div>
   </div>

@@ -8,16 +8,12 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
  
 const Orders = () => {
-  
-  
-  const {cart} = useContext(AuthContext)
-   
  
-
+  const {cart} = useContext(AuthContext)
+ 
   const deleteCart = () => {
     deleteShoppingCart()
   }
-
   const handleReviewItem = (id) => {
     // const remainingCart = cart.filter(product => product.id !== id);
     // setCart(remainingCart)

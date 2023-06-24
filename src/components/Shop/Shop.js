@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Shop.css'
-import Products from '../Products/Products';
-import Cart from '../Cart/Cart';
-import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fakedb';
+import ProductsCard from '../Products/ProductsCard';
+ 
+import { addToDb,   getStoredCart } from '../../utilities/fakedb';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
    
-  const deleteCart = () => {
-    setCart([])
-    deleteShoppingCart()
-  }
-
   useEffect(() => {
     fetch('products.json')
     .then(res => res.json())
@@ -46,28 +41,24 @@ const Shop = () => {
         exists.quantity = exists.quantity + 1;
         newCart = [...rest, exists];
     }
-    console.log(selectedProduct)
-    // const newCart = [...cart, selectedProduct];
+     
     setCart(newCart)
     addToDb(selectedProduct.id)
 }
   return (
-    <div className='shop-container '>
-      <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-11 product-container">
+    <div className='  '>
+      <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 product-container">
          {
-          products.map(product => <Products
+          products.slice(0,6).map(product => <ProductsCard
           key={product.id}
            product={product}
            handleAddToCart={handleAddToCart}
-          ></Products>)
+          ></ProductsCard>)
          }
+         <button  className='text-2xl hover:text-sky-700'>see more</button>
       </div>
-      <div className="cart-container bg-orange-100  sticky top-20 right-10  w-64 p-3  h-screen">
-         <Cart
-         deleteCart={deleteCart}
-         cart={cart}
-         ></Cart>
-      </div>
+       
+      
     </div>
   );
 };

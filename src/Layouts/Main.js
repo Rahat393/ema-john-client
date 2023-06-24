@@ -9,11 +9,11 @@ const Main = () => {
     <div>
         <div className='wrapper'>
         <Header></Header>
-         <div className='  bg-green-50   mt-20'>
+         <div className='  bg-green-50 min-h-screen   mt-20'>
          <Outlet ></Outlet>
          </div>
         </div>
-        <footer className="footer">
+        <footer className="footerr">
       <Footer></Footer>
       </footer>
     </div>
