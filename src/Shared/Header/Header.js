@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/zaraa.png';
+import { AuthContext } from '../../contexts/AuthProvider';
  
 
 const Header = () => {
+
+  const {cartLength} = useContext(AuthContext)
 
   const navMenu = <React.Fragment>
      <li>
@@ -16,17 +19,7 @@ const Header = () => {
     style={{ height: "25px", width: "25px" }}></lord-icon>  
       Collections</Link></li>
 
-      <li >
-        <Link  to='/orders' className='text-lg font-semibold'>
-        <lord-icon
-    src="https://cdn.lordicon.com/hyhnpiza.json"
-    trigger="hover"
-    colors="primary:#121331"
-    style={{ height: "25px", width: "25px" }}>
-</lord-icon>
-           My Cart
-        </Link>
-      </li>
+       
 
 
      <li><Link to='contact' className='text-lg font-semibold'>
@@ -38,6 +31,20 @@ const Header = () => {
     style={{ height: "25px", width: "25px" }}>
 </lord-icon>
      Contact</Link></li>
+
+     <li  >
+        <Link  to='/orders' className='text-lg font-semibold'>
+        <lord-icon
+    src="https://cdn.lordicon.com/hyhnpiza.json"
+    trigger="hover"
+    colors="primary:#121331"
+    style={{ height: "25px", width: "25px" }}>
+</lord-icon>
+           My Cart
+        </Link>
+        <p className='relative z-10 bg-[#D61355] ml-24 -mt-12 text-white flex justify-center items-center rounded-3xl h-5 w-3'>{cartLength}</p>
+
+      </li>
   </React.Fragment>
   return (
     <div className=' fixed left-0 right-0 top-0 z-10 bg-[#fff] '>

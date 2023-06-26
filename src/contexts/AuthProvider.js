@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
   const [products, setProducts] = useState(null)
     const [cart, setCart] = useState([])
+    const cartLength = cart?.length
 
     useEffect(() => {
       axios.get('products.json')
@@ -31,7 +32,8 @@ const AuthProvider = ({children}) => {
 
   const authInfo = {
     cart,
-    products
+    products,
+    cartLength
   }
   return (
     <AuthContext.Provider value={authInfo}>

@@ -31,19 +31,19 @@ const Orders = () => {
   
    
   return (
-    <div className='grid   shop-container max-w-screen-xl mx-auto'>
-      <div>
+    <div className='grid shop-container max-w-screen-xl mx-auto mt-10'>
+      <div className='bg-white pt-4  p-8  '>
         {
           cart.map(({ name, id, img, price, quantity },  index) => <div key={index}>
           
               <div className='style-reviewItem'>
-    <div>
+    <div className=''>
         <img src={ img} alt="" />
     </div>
-    <div className='review-details-container'>
+    <div className='review-details-container  '>
         <div className='review-details'>
             <p>{ name}</p>
-            <p><small>Price: ${ price * quantity}</small></p>
+            <p>< >Price: ${ price * quantity}</></p>
             <div >
             <p className='flex items-center gap-1 font-semibold'>  Quantity:  
             <button className='ml-1' onClick={() => handleRemoveOne ( id)} disabled={quantity <= 1}  >
@@ -70,12 +70,14 @@ const Orders = () => {
           </div>)
         }
          
+        <div className=' flex items-center justify-center min-h-full  '>
         {
-          cart.length === 0 && <h2 className='text-3xl'>NO product added. Please <Link className='underline text-blue-800' to={'/'}>Shop here</Link></h2>
+          cart.length === 0 && <h2 className='text-3xl'>Your cart is empty now. Please <Link className='underline text-blue-800' to={'/'}>Shop here</Link></h2>
         }
+        </div>
       </div>
      
-     <div>
+     <div className='ml-5 text-xl bg-white p-3'>
      <Cart
      deleteCart={deleteCart}
      cart={cart}></Cart>

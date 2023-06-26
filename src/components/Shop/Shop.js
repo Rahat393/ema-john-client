@@ -3,6 +3,7 @@ import './Shop.css'
 import ProductsCard from '../Products/ProductsCard';
  
 import { addToDb,   getStoredCart } from '../../utilities/fakedb';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -49,13 +50,13 @@ const Shop = () => {
     <div className='  '>
       <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 product-container">
          {
-          products.slice(0,6).map(product => <ProductsCard
+          products.slice(0,12).map(product => <ProductsCard
           key={product.id}
            product={product}
            handleAddToCart={handleAddToCart}
           ></ProductsCard>)
          }
-         <button  className='text-2xl hover:text-sky-700'>see more</button>
+         <button  className='text-2xl hover:text-sky-700'><Link to={'/allproduct'}>see more</Link></button>
       </div>
        
       
