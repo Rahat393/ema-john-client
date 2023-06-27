@@ -84,17 +84,21 @@ const Header = () => {
 <span className='text-lg font-semibold ml-1 '>Search</span>
     </ul>
     </button>
+     
     <button className='ml-4'>
-      <ul className='flex items-center justify-center  '>
-      <lord-icon
+      <ul className=''>
+ <Link to='/wishlist'>
+ <lord-icon
     src="https://cdn.lordicon.com/pnhskdva.json"
     trigger="hover"
     colors="primary:#121331"
     style={{ height: "25px", width: "25px" }}>
 </lord-icon>
-<span className='text-lg font-semibold ml-1 '> WishList </span>
+<span className='text-lg font-semibold ml- mt-5 '> WishList </span>
+ </Link>
       </ul>
     </button>
+     
     <button  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
       Sign In
     </button>

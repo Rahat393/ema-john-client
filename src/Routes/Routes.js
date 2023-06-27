@@ -5,8 +5,9 @@ import Orders from "../Pages/Orders/Orders";
 import Inventory from "../components/Inventory/Inventory";
 import { productsAndcardLoader } from "../components/loader/productsAndCardLoader";
 import Contact from "../Pages/Contact/Contact";
-import WishList from "../Pages/WishList/WishList";
+ 
 import AllProducts from "../Pages/AllProducts/AllProducts";
+import WishListPage from "../Pages/WishListPage/WishListPage";
 
 export const routes =  createBrowserRouter ([
   {
@@ -19,7 +20,7 @@ export const routes =  createBrowserRouter ([
     },
     {
       path: '/wishlist',
-      element: <WishList></WishList>
+      element: <WishListPage></WishListPage>
     },
     {
       path: '/orders',

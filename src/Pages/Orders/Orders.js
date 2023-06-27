@@ -31,7 +31,7 @@ const Orders = () => {
   
    
   return (
-    <div className='grid shop-container max-w-screen-xl mx-auto mt-10'>
+    <div className='grid shop-container max-w-screen-xl mx-auto mt-10 mb-7'>
       <div className='bg-white pt-4  p-8  '>
         {
           cart.map(({ name, id, img, price, quantity },  index) => <div key={index}>

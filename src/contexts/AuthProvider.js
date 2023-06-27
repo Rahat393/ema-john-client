@@ -1,12 +1,15 @@
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 import { getStoredCart } from '../utilities/fakedb';
+import { getStoredWl } from '../utilities/WishList';
 
 
 export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
   const [products, setProducts] = useState(null)
     const [cart, setCart] = useState([])
+    const [wishList, setWishList] = useState([])
+
     const cartLength = cart?.length
 
     useEffect(() => {
@@ -30,10 +33,24 @@ const AuthProvider = ({children}) => {
       setCart(savedCart)
   }, [cart, products])
 
+    // GET WISHLIST FROM DB
+    useEffect(() => {
+      let wishList = [];
+      const storedList = getStoredWl();
+      for (const id in storedList) {
+          const addedList = products?.find(product => product.id === id)
+          if (addedList) {
+              wishList.push(addedList)
+          }
+      }
+      setWishList(wishList)
+  }, [products, cart])
+
   const authInfo = {
     cart,
     products,
-    cartLength
+    cartLength,
+    wishList
   }
   return (
     <AuthContext.Provider value={authInfo}>
