@@ -2,10 +2,7 @@ import React from 'react';
 import img from '../../assets/img/12982910_5124556.jpg'
 
 const Contact = () => {
-
-  // const handleSubmit =()=>{
-  //   toast.success("Your Message sent successfully!")
-  // }
+ 
   return (
     <React.Fragment>
       <h2 className='text-center text-4xl font-bold text-orange-600 mt-6'>Contact Us</h2>

@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { getStoredCart } from '../../utilities/fakedb';
  
-const ProductsCard = ({product , handleAddToCart  }) => {
+const ProductsCard = ({product , handleAddToCart, setModalOpen  }) => {
   const {  wishList, cart } = useContext(AuthContext)
 
   const {id:productId, name, img,seller, price, ratingsCount  } = product

@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/zaraa.png';
 import { AuthContext } from '../../contexts/AuthProvider';
+import SearchModal from '../../Pages/SearchModal/SearchModal';
  
 
 const Header = () => {
 
   const {cartLength} = useContext(AuthContext)
+  const [modalOpen, setModalOpen] = useState(false);
+
 
   const navMenu = <React.Fragment>
      <li>
@@ -72,7 +75,7 @@ const Header = () => {
     </ul>
   </div>
   <div className="navbar-end mr-6">
-    <button>
+    <button onClick={() => setModalOpen(true)}>
     <ul className='flex items-center justify-center  '>
     <lord-icon
                             target="button"
@@ -98,6 +101,9 @@ const Header = () => {
  </Link>
       </ul>
     </button>
+
+    {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
+
      
     <button  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
       Sign In

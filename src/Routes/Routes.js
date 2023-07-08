@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact/Contact";
  
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import WishListPage from "../Pages/WishListPage/WishListPage";
+import ProductsCard from "../components/Products/ProductsCard";
 
 export const routes =  createBrowserRouter ([
   {
@@ -37,6 +38,11 @@ export const routes =  createBrowserRouter ([
     {
       path: '/contact',
       element: <Contact></Contact>
+    },
+    {
+      path: '/products/:id',
+      loader: async({params}) => await fetch (`products.json/products/${params.id}`),
+      element: <ProductsCard/>
     }
 
    ] 
