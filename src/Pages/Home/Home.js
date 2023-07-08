@@ -3,6 +3,7 @@ import Shop from '../../components/Shop/Shop';
 import lottie from 'lottie-web';
 import { defineElement } from 'lord-icon-element';
 import HeoCarousel from '../../components/Carousels/HeoCarousel';
+import Features from './Features/Features';
 defineElement(lottie.loadAnimation);
 
  
@@ -13,6 +14,7 @@ const Home = () => {
      
       <HeoCarousel></HeoCarousel>
       <Shop></Shop>
+      <Features></Features>
        </div>
        
     </div>
