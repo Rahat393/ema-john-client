@@ -6,9 +6,16 @@ import SearchModal from '../../Pages/SearchModal/SearchModal';
  
 
 const Header = () => {
+  const {user, logout} = useContext(AuthContext)
 
   const {cartLength} = useContext(AuthContext)
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleLogOut = () => {
+    logout()
+    .then(() => { })
+     .catch(err => console.log(err))
+}
 
 
   const navMenu = <React.Fragment>
@@ -105,9 +112,20 @@ const Header = () => {
     {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
 
      
-    <button  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
+    {user?.uid ?
+    <button onClick={handleLogOut}  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
+    Log Out
+  </button>
+   : 
+      <Link to={'/login'}>
+         <button  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
       Sign In
     </button>
+      </Link>
+
+
+   
+  }
   </div>
 </div>
     </div>

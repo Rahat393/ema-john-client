@@ -9,6 +9,8 @@ import Contact from "../Pages/Contact/Contact";
 import AllProducts from "../Pages/AllProducts/AllProducts";
 import WishListPage from "../Pages/WishListPage/WishListPage";
 import ProductsCard from "../components/Products/ProductsCard";
+import LogIn from "../Pages/LogIn/LogIn";
+import SignUp from "../Pages/SignUp/SignUp";
 
 export const routes =  createBrowserRouter ([
   {
@@ -18,6 +20,14 @@ export const routes =  createBrowserRouter ([
     {
       path: '/',
       element: <Home></Home>
+    },
+    {
+      path: '/login',
+      element : <LogIn></LogIn>
+    },
+    {
+      path: '/signUp',
+      element: <SignUp></SignUp>
     },
     {
       path: '/wishlist',

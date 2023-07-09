@@ -5,6 +5,7 @@ import { defineElement } from 'lord-icon-element';
 import HeoCarousel from '../../components/Carousels/HeoCarousel';
 import Features from './Features/Features';
 import Review from './Review/Review';
+import Subscribe from './Subscribe/Subscribe';
 defineElement(lottie.loadAnimation);
 
  
@@ -17,6 +18,7 @@ const Home = () => {
       <Shop></Shop>
       <Features></Features>
       <Review></Review>
+      <Subscribe></Subscribe>
        </div>
        
     </div>
