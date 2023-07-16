@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react';
+import { FiLogIn } from 'react-icons/fi'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/zaraa.png';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -42,7 +44,7 @@ const Header = () => {
 </lord-icon>
      Contact</Link></li>
 
-     <li  >
+     <li className='hidden lg:block' >
         <Link  to='/orders' className='text-lg font-semibold'>
         <lord-icon
     src="https://cdn.lordicon.com/hyhnpiza.json"
@@ -66,13 +68,13 @@ const Header = () => {
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow   rounded-box w-52">
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white h-24  rounded-box w-52">
          {navMenu}
       </ul>
     </div>
     <div className='flex'>
     
-     <Link   className="btn btn-ghost normal-case text-3xl text-yellow-600 font-semibold   "> <img className='w-16 -mr-4' src={logo} alt="" />  zarafashion</Link>
+     <Link   className="btn btn-ghost normal-case text-xl mr-3 lg:text-3xl text-yellow-600 font-semibold   "> <img className='w-16 -mr-4' src={logo} alt="" />  zarafashion</Link>
  
     </div>
   </div>
@@ -91,43 +93,57 @@ const Header = () => {
                             class="set-color"
                             style={{ height: "25px", width: "25px" }}>
                         </lord-icon>
-<span className='text-lg font-semibold ml-1 '>Search</span>
+<span className='text-lg font-semibold ml-1  hidden lg:block'>Search</span>
     </ul>
     </button>
-     
-    <button className='ml-4'>
-      <ul className=''>
- <Link to='/wishlist'>
- <lord-icon
-    src="https://cdn.lordicon.com/pnhskdva.json"
-    trigger="hover"
-    colors="primary:#121331"
-    style={{ height: "25px", width: "25px" }}>
-</lord-icon>
-<span className='text-lg font-semibold ml- mt-5 '> WishList </span>
- </Link>
-      </ul>
+    {modalOpen && <SearchModal modalOpen={modalOpen} setModalOpen={setModalOpen} />}
+    <button className='font-semibold ml-2' >
+    <ul className='flex items-center justify-center  '>
+    <Link to='/wishlist' className="  flex items-center gap-1 font-semibold  mr-5  ">
+                             
+                            <lord-icon
+                                target="a"
+                                src="https://cdn.lordicon.com/pnhskdva.json"
+                                trigger="hover"
+                                class="set-color"
+                                style={{ height: "25px", width: "25px" }}>
+                            </lord-icon>
+                            
+                            <span className='lg:block md:block hidden text-lg'>WishList</span>
+                        </Link>
+     </ul>
     </button>
+     
+    <ul className='lg:hidden' >
+        <Link  to='/orders' className='text-lg font-semibold'>
+         <AiOutlineShoppingCart className='text-xl'/>
+            
+        <p className='relative z-10 bg-[#D61355] ml-5 -mt-7 mb-2 mr-2 text-white flex justify-center items-center rounded-xl h-4 w-3 text-xs'>{cartLength}</p>
+        </Link>
 
-    {modalOpen && <SearchModal setModalOpen={setModalOpen} />}
+      </ul>
+
+    
 
      
     {user?.uid ?
-    <button onClick={handleLogOut}  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
+    <button onClick={handleLogOut}  className='ml-5 bg-red-400 lg:px-3 lg:py-2 p-1 rounded-md lg:rounded-md hover:bg-red-300 text-white lg:font-semibold'>
     Log Out
   </button>
    : 
-      <Link to={'/login'}>
-         <button  className='ml-5 bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
+     <>
+       <Link to={'/login'}>
+         <button  className='ml-5 lg:block md:block hidden bg-red-400 px-3 py-2 rounded-md hover:bg-red-300 text-white font-semibold'>
       Sign In
     </button>
       </Link>
-
-
-   
+      <Link to='/login' className='mr-2 lg:hidden md:hidden block'><FiLogIn className='text-xl text-colorRed' /></Link>
+     </>
+ 
   }
   </div>
 </div>
+
     </div>
  
   );

@@ -4,14 +4,14 @@ import { addToWl, getStoredWl, removeFromWl } from '../../utilities/WishList';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { getStoredCart } from '../../utilities/fakedb';
- 
-const ProductsCard = ({product , handleAddToCart, setModalOpen  }) => {
+  
+const ProductsCard = ({product , handleAddToCart }) => {
   const {  wishList, cart } = useContext(AuthContext)
 
   const {id:productId, name, img,seller, price, ratingsCount  } = product
   const [added, setAdded] = useState(false)
   const [storedWl, setStoredWl] = useState(false)
-
+ 
   useEffect(() => {
     const storedCart = getStoredCart();
     if (storedCart[productId]) {
@@ -42,9 +42,9 @@ const ProductsCard = ({product , handleAddToCart, setModalOpen  }) => {
     }
   }
   return (
-    <div className='hover:bg-white p-7 rounded-md shadow-lg mb-6'>
+    <div   className='hover:bg-white hover:text-black  lg:p-7 p-3 rounded-md shadow-lg mb-6'>
   <div>
-  <img className='h-64 rounded-md' src={img} alt="" />
+  <img className='lg:h-64 rounded-md' src={img} alt="" />
   <p className='mt-3'>
   <small className='text-red-400 font-semibold ' >{seller}</small>
 
@@ -52,7 +52,7 @@ const ProductsCard = ({product , handleAddToCart, setModalOpen  }) => {
       <h2 className='font-semibold'> {name}</h2>
 
      <div className='flex lg:flex-row md:flex-row flex-col lg:gap-0 md:gap-0 gap-1 justify-between'>
-     <h3 className='text-xl font-bold mt-5'>USD  {price}</h3>
+     <h3 className='text-xl   font-bold mt-5'>USD  {price}</h3>
      <div className='flex items-center gap-2'>
                         <span className='flex lg:gap-1 md:gap-1 gap-[2px] lg:text-sm md:text-sm text-xs mt-4 text-[#FFB84C]'>
                             <BsStarFill />

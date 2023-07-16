@@ -1,8 +1,7 @@
 .style-reviewItem {
   display: flex;
-  border: 1px solid lightslategray;
-  width: 571px;
-  height: 90px;
+  border-radius: 5px;
+  background-color: rgba(255, 228, 196, 0.412);
   margin: 0 auto;
   padding: 10px;
   margin-top: 8px;

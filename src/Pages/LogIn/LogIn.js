@@ -4,8 +4,10 @@ import { BiError } from 'react-icons/bi'
 import { AuthContext } from '../../contexts/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleLogIn from '../SignUp/GoogleLogIn';
+import useTitle from '../../hooks/useTitle';
 
 const LogIn = () => {
+  useTitle('Log In')
   const { emailLogin } = useContext(AuthContext)
   const [error, setError] = useState(false)
   const navigate = useNavigate()

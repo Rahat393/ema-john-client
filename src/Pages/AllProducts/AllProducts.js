@@ -2,10 +2,13 @@ import React, { useContext,   useEffect,   useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import ProductsCard from '../../components/Products/ProductsCard';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import { toast } from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 // import { addToDb, getStoredCart } from '../../utilities/fakedb';
 
 const AllProducts = () => {
-
+ 
+    useTitle('Collection')
   
   const {  products=[] } = useContext(AuthContext)
   const [selectedProduct, setSelectedProduct] = useState(products)
@@ -56,11 +59,13 @@ const [ productss, setProducts] = useState([]);
     if (!exists) {
         selectedProduct.quantity = 1;
         newCart = [...cart, selectedProduct]
+        toast.success('Product Added Successfully !!')
     }
     else {
         const rest = cart.filter(product => product.id !== selectedProduct.id)
         exists.quantity = exists.quantity + 1;
         newCart = [...rest, exists];
+        toast.success('Product Added Successfully !!')
     }
      
     setCart(newCart)

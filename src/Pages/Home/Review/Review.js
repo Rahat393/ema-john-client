@@ -4,6 +4,7 @@ import ReviewCard from '../../../components/ReviewCard/ReviewCard';
  
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import './Review.css'
 
 const Review = () => {
   var settings = {
@@ -70,7 +71,7 @@ const testimonialData = [
 ]
   return (
     <section className='my-16'>
-    <h2 className='text-center lg:text-5xl md:text-3xl text-2xl font-bold pt-5 mb-10  text-orange-700  '>From Our Customer</h2>
+    <h2 className='text-center lg:text-5xl md:text-3xl text-2xl font-bold pt-5 mb-10  text-orange-700  textGradiant'>From Our Customer</h2>
     <Slider {...settings}>
         {
             testimonialData.map((item, index) => <ReviewCard key={index} data={item} />)

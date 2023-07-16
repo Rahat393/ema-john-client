@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import './Shop.css'
 import ProductsCard from '../Products/ProductsCard';
  
 import { addToDb,   getStoredCart } from '../../utilities/fakedb';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
-import { addToWl, getStoredWl, removeFromWl } from '../../utilities/WishList';
 import { toast } from 'react-hot-toast';
-import ButtonPrimary from '../Button/ButtonPrimary';
+ 
 
 const Shop = () => {
 
@@ -18,7 +16,7 @@ const Shop = () => {
   
    
   useEffect(() => {
-    fetch('products.json')
+    fetch('http://localhost:5000/products')
     .then(res => res.json())
     .then(data =>  setProducts(data))
   },[]);
@@ -44,11 +42,13 @@ const Shop = () => {
     if (!exists) {
         selectedProduct.quantity = 1;
         newCart = [...cart, selectedProduct]
+        toast.success('Product Added Successfully !!')
     }
     else {
         const rest = cart.filter(product => product.id !== selectedProduct.id)
         exists.quantity = exists.quantity + 1;
         newCart = [...rest, exists];
+        toast.success('Product Added Successfully !!')
     }
      
     setCart(newCart)

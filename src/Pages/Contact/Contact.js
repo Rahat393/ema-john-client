@@ -1,7 +1,9 @@
 import React from 'react';
 import img from '../../assets/img/12982910_5124556.jpg'
+import useTitle from '../../hooks/useTitle';
 
 const Contact = () => {
+  useTitle('Contact')
  
   return (
     <React.Fragment>

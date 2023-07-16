@@ -3,8 +3,10 @@ import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import GoogleLogIn from './GoogleLogIn';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
+  useTitle('Sign Up')
   const { emailRegister, updateUser } = useContext(AuthContext)
   const navigate = useNavigate()
   const [formData, setFormData] = useState({

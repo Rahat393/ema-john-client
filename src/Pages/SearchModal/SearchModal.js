@@ -1,15 +1,19 @@
-import { useQueries } from '@tanstack/react-query';
+import {   useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import ProductsCard from '../../components/Products/ProductsCard';
 import './SearchModal.css'
-
-const SearchModal = ({setModalOpen}) => {
+import useTitle from '../../hooks/useTitle';
+ 
+const SearchModal = ({setModalOpen  }) => {
+  useTitle('Search')
   const [searchTerm, setSearchTerm] = useState('');
-  const { data: products = [], refetch } = useQueries(['products', searchTerm], async () => {
-    const res = await fetch(`products.json`);
+  const {  data: products = [], refetch } = useQuery(['products', searchTerm], async () => {
+    const res = await fetch(`http://localhost:5000/products/search?searchTerm=${searchTerm}`);
     const data = await res.json();
     return data;
   });
+
+  console.log(products);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -29,7 +33,7 @@ const SearchModal = ({setModalOpen}) => {
       >
         ✕
       </button>
-      <h2>Search Products</h2>
+      <h2 className='text-orange-600 text-4xl text-center font-semibold mt-7 '>Search Products</h2>
       <form onSubmit={handleSearch} className="flex justify-center mt-8" data-aos="zoom-in">
         <input
           type="text"
@@ -41,15 +45,18 @@ const SearchModal = ({setModalOpen}) => {
         />
       </form>
 
-      {
+      {  
         products?.length ? <div
           className="search-products max-h-96 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-5 mt-10 text-white"
-        >
-          {products.map((item) => (
-            <ProductsCard key={item.id} data={item} setModalOpen={setModalOpen} />
+        > 
+          {products?.map((item) => (
+            <ProductsCard key={item.id} product={item}  setModalOpen={setModalOpen} />
           ))}
+
+             
         </div>
-          : <h1 className='text-white text-3xl mt-10 lg:text-start text-center'>No Items Found!</h1>}
+          : <h1 className='text-white text-3xl mt-10 lg:text-start text-center'>No Items Found!</h1>
+          }
     </section>
   </div>
   );

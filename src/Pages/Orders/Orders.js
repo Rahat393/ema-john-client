@@ -5,18 +5,17 @@ import './Orders.css'
 import {   FiPlusCircle, FiMinusCircle } from 'react-icons/fi'
 import { addToDb, deleteShoppingCart, removeFromDb, removeOneFromDb } from '../../utilities/fakedb';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
  
 const Orders = () => {
- 
+ useTitle('Orders')
   const {cart} = useContext(AuthContext)
  
   const deleteCart = () => {
     deleteShoppingCart()
   }
   const handleReviewItem = (id) => {
-    // const remainingCart = cart.filter(product => product.id !== id);
-    // setCart(remainingCart)
     removeFromDb(id)
   }
   const handleAddOneMore = (id) => {
@@ -31,8 +30,8 @@ const Orders = () => {
   
    
   return (
-    <div className='grid shop-container max-w-screen-xl mx-auto mt-10 mb-7'>
-      <div className='bg-white pt-4  p-8  '>
+    <div className=' lg:flex justify-between  max-w-screen-xl mx-auto mt-10 mb-7 space-y-5'>
+      <div className='bg-white pt-4  p-8 lg:w-3/4 rounded-lg '>
         {
           cart.map(({ name, id, img, price, quantity },  index) => <div key={index}>
           
@@ -77,7 +76,7 @@ const Orders = () => {
         </div>
       </div>
      
-     <div className='ml-5 text-xl bg-white p-3'>
+     <div className='ml-5 text-xl bg-white p-3 rounded-lg lg:h-72'>
      <Cart
      deleteCart={deleteCart}
      cart={cart}></Cart>

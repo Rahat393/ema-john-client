@@ -6,10 +6,12 @@ import HeoCarousel from '../../components/Carousels/HeoCarousel';
 import Features from './Features/Features';
 import Review from './Review/Review';
 import Subscribe from './Subscribe/Subscribe';
+import useTitle from '../../hooks/useTitle';
 defineElement(lottie.loadAnimation);
 
  
 const Home = () => {
+  useTitle('Home')
   return (
     <div className='  p-5  mx-auto'>
        <div className='max-w-screen-xl mx-auto'>

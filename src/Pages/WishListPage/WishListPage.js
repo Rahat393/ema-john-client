@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider';
 import WishListCard from '../../components/WishListCard/WishListCard';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const WishListPage = () => {
+  useTitle('Wishlist')
   const { wishList } = useContext(AuthContext)
   return (
-    <div className='max-w-screen-xl mx-auto'>
+    <div className='max-w-screen-xl mx-auto mb-7'>
        <>
             <h2 className='text-center text-4xl font-bold text-orange-600 my-6'>My Wishlist</h2>
             {wishList?.length > 0 ?
